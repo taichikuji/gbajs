@@ -1,6 +1,6 @@
 body {
 	background: url('bg.png') no-repeat top center;
-    background-color: #008AA1;
+        background-color: #008AA1;
 	text-align: center;
 	margin: 0 0 15px;
 	color: white;
@@ -38,7 +38,7 @@ button {
 	border-width: 0 1px;
 	margin: 0 -5px 20px;
 	background: -webkit-linear-gradient(top, #127A8C, #1697AD 15%, #1BB1CC 50%, #127A8C);
-    background: -moz-linear-gradient(top, #127A8C, #1697AD 15%, #1BB1CC 50%, #127A8C);
+        background: -moz-linear-gradient(top, #127A8C, #1697AD 15%, #1BB1CC 50%, #127A8C);
 	box-shadow: 0 5px 4px -3px rgba(0, 0, 0, 0.6);
 	position: absolute;
 }
@@ -134,7 +134,7 @@ p:first-child {
 
 a:link, a:visited {
 	color: #fcb3f0;
-    text-decoration: none;
+        text-decoration: none;
 }
 
 .hidden {
@@ -162,20 +162,20 @@ input[type=range] {
 }
 
 footer {
-    margin: 10px;
+        margin: 10px;
 	font-size: 12px;
 	padding-top: 24px;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    display: block;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        display: block;
 }
 
 svg.icon {
-    height: 24px;
-    width: 24px;
-    vertical-align: middle;
+        height: 24px;
+        width: 24px;
+        vertical-align: middle;
 }
 
 p {
@@ -203,12 +203,12 @@ ul#links li:not(:first-child)::before {
 }
 
 .firstmargin{
-margin-left: 0px;
+        margin-left: 5px;
 }
 .margin{
-margin-left: 5px;
-margin-right: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
 }
 .lastmargin{
-margin-right: 0px;
+        margin-right: 5px;
 }
