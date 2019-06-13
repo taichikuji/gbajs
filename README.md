@@ -1,3 +1,14 @@
+<h1>Taichi's Arcade Store!</h1>
+
+This is a small project for me to practice html, css, and javascript. Especially the last two of them.
+I didn't do the emulator's core, but i plan on doing it from scratch in the future. For now i'll just try to fix the issues that this one has and keep it as "mine" as possible.
+
+# Ideas and TODO
+
+- [x] Changed overall look of website
+- [ ] Fix savegames (can't really know if it works or not, but i couldn't get it to work even when exhaustingly looking on forums. I'll try to rebuild it myself)
+- [ ] Add new js (new functions for the website, already in the process)
+
 ## License
 Copyright © 2012 – 2013, Jeffrey Pfau
 All rights reserved.
