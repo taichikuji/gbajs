@@ -215,7 +215,7 @@ ul#links li:not(:first-child)::before {
 
 a:hover > span.text {
     display: inline-block;
-    color: #8fbcbb;
+    color: #fcb3f0;;
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
     -webkit-animation-duration: 1s;
