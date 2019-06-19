@@ -212,3 +212,30 @@ ul#links li:not(:first-child)::before {
 .lastmargin{
         margin-right: 5px;
 }
+
+a:hover > span.text {
+    display: inline-block;
+    color: #8fbcbb;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+span.text:not(:hover) {display: none;} a:link {text-decoration:none;} a:visited {color: #88c0d0;}
+
+/* animations min */
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.fadeIn {-webkit-animation-name: fadeIn;animation-name: fadeIn;}
