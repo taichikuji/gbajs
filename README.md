@@ -6,8 +6,25 @@ I didn't do the emulator's core, but i plan on doing it from scratch in the futu
 # Ideas and TODO
 
 - [x] Changed overall look of website
-- [ ] Fix savegames (can't really know if it works or not, but i couldn't get it to work even when exhaustingly looking on forums. I'll try to rebuild it myself)
+- [x] Fix savegames (✅ **COMPLETED** - See [QUICK_START.md](QUICK_START.md) for usage guide)
 - [ ] Add new js (new functions for the website, already in the process)
+
+## Savegame Functionality
+
+The savegame system has been completely fixed and enhanced! Features include:
+
+- ✅ Automatic saves during gameplay
+- ✅ Auto-save on page close/refresh
+- ✅ Manual "Store Savegame" button
+- ✅ Download/Upload save files
+- ✅ Robust error handling
+- ✅ Clear user feedback
+
+**Documentation:**
+- [QUICK_START.md](QUICK_START.md) - User guide with troubleshooting
+- [SAVEGAME_FIXES.md](SAVEGAME_FIXES.md) - Technical details
+- [IMPLEMENTATION_SUMMARY.md](IMPLEMENTATION_SUMMARY.md) - Complete overview
+- [test_saves.html](test_saves.html) - Browser compatibility test
 
 ## License
 Copyright © 2012 – 2013, Jeffrey Pfau
