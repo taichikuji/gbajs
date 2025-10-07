@@ -290,6 +290,11 @@ function enableDebug() {
 			debug.postMessage('disconnect', document.domain || '*');
 		}
 	}
+	window.onbeforeunload = function() {
+		if (gba && gba.mmu && gba.mmu.save) {
+			gba.storeSavedata();
+		}
+	}
 	if (!debug || !debug.postMessage) {
 		debug = window.open('debugger.html', 'debug');
 	} else {

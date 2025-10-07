@@ -78,6 +78,12 @@ window.onload = function() {
 		gbaCon.memory.refreshAll();
 	});
 };
+
+window.onbeforeunload = function() {
+	if (core && core.mmu && core.mmu.save) {
+		core.storeSavedata();
+	}
+};
 </script>
 </head>
 <body>

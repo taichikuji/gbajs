@@ -72,6 +72,12 @@ window.onunload = function() {
 		window.master.postMessage('disconnect', document.domain || '*');
 	}
 }
+
+window.onbeforeunload = function() {
+	if (gba && gba.mmu && gba.mmu.save) {
+		gba.storeSavedata();
+	}
+}
 </script>
 
 </head>
