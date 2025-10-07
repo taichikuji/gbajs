@@ -290,6 +290,11 @@ function enableDebug() {
 			debug.postMessage('disconnect', document.domain || '*');
 		}
 	}
+	window.onbeforeunload = function() {
+		if (gba && gba.mmu && gba.mmu.save) {
+			gba.storeSavedata();
+		}
+	}
 	if (!debug || !debug.postMessage) {
 		debug = window.open('debugger.html', 'debug');
 	} else {
@@ -327,6 +332,7 @@ document.addEventListener('webkitfullscreenchange', function() {
 		<button id="pause" class="bigbutton" onclick="togglePause()">PAUSE</button>
 		<button class="bigbutton" onclick="reset()">RESET</button>
 		<button onclick="gba.downloadSavedata()">Download Savegame</button>
+		<button onclick="gba.storeSavedata()">Store Savegame</button>
 		<button onclick="screenshot()">Screenshot</button>
 		<label id="pixelated">
 			<input type="checkbox" onchange="setPixelated(this.checked)">

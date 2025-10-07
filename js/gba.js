@@ -311,28 +311,54 @@ GameBoyAdvance.prototype.downloadSavedata = function() {
 		window.open(url);
 	} else {
 		var data = this.encodeBase64(sram.view);
-		window.open('data:application/octet-stream;base64,' + data, this.rom.code + '.sav');
+		var filename = (this.mmu.cart && this.mmu.cart.code) ? this.mmu.cart.code : 'save';
+		window.open('data:application/octet-stream;base64,' + data, filename + '.sav');
 	}
 };
 
 
 GameBoyAdvance.prototype.storeSavedata = function() {
 	var sram = this.mmu.save;
+	if (!sram) {
+		this.WARN("No save data available to store");
+		return;
+	}
+	if (!this.mmu.cart || !this.mmu.cart.code) {
+		this.WARN("Cannot store savedata: no cart code available");
+		return;
+	}
 	try {
 		var storage = window.localStorage;
-		storage[this.SYS_ID + '.' + this.mmu.cart.code] = this.encodeBase64(sram.view);
+		if (!storage) {
+			this.WARN('localStorage is not available');
+			return;
+		}
+		var key = this.SYS_ID + '.' + this.mmu.cart.code;
+		storage[key] = this.encodeBase64(sram.view);
+		this.INFO('Savedata stored for ' + this.mmu.cart.code + ' (size: ' + sram.buffer.byteLength + ' bytes)');
 	} catch (e) {
-		this.WARN('Could not store savedata! ' + e);
+		if (e.name === 'QuotaExceededError' || e.name === 'NS_ERROR_DOM_QUOTA_REACHED') {
+			this.WARN('Could not store savedata: localStorage quota exceeded');
+		} else {
+			this.WARN('Could not store savedata! ' + e);
+		}
 	}
 };
 
 GameBoyAdvance.prototype.retrieveSavedata = function() {
+	if (!this.mmu.cart || !this.mmu.cart.code) {
+		this.WARN("Cannot retrieve savedata: no cart code available");
+		return false;
+	}
 	try {
 		var storage = window.localStorage;
 		var data = storage[this.SYS_ID + '.' + this.mmu.cart.code];
 		if (data) {
 			this.decodeSavedata(data);
+			this.INFO('Savedata loaded for ' + this.mmu.cart.code);
 			return true;
+		} else {
+			this.INFO('No savedata found for ' + this.mmu.cart.code);
 		}
 	} catch (e) {
 		this.WARN('Could not retrieve savedata! ' + e);
