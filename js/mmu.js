@@ -474,6 +474,9 @@ GameBoyAdvanceMMU.prototype.loadRom = function(rom, process) {
 };
 
 GameBoyAdvanceMMU.prototype.loadSavedata = function(save) {
+	if (!this.save) {
+		return;
+	}
 	this.save.replaceData(save);
 };
 

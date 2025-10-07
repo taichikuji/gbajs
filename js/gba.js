@@ -311,13 +311,22 @@ GameBoyAdvance.prototype.downloadSavedata = function() {
 		window.open(url);
 	} else {
 		var data = this.encodeBase64(sram.view);
-		window.open('data:application/octet-stream;base64,' + data, this.rom.code + '.sav');
+		var filename = (this.mmu.cart && this.mmu.cart.code) ? this.mmu.cart.code : 'save';
+		window.open('data:application/octet-stream;base64,' + data, filename + '.sav');
 	}
 };
 
 
 GameBoyAdvance.prototype.storeSavedata = function() {
 	var sram = this.mmu.save;
+	if (!sram) {
+		this.WARN("No save data available to store");
+		return;
+	}
+	if (!this.mmu.cart || !this.mmu.cart.code) {
+		this.WARN("Cannot store savedata: no cart code available");
+		return;
+	}
 	try {
 		var storage = window.localStorage;
 		storage[this.SYS_ID + '.' + this.mmu.cart.code] = this.encodeBase64(sram.view);
@@ -327,6 +336,10 @@ GameBoyAdvance.prototype.storeSavedata = function() {
 };
 
 GameBoyAdvance.prototype.retrieveSavedata = function() {
+	if (!this.mmu.cart || !this.mmu.cart.code) {
+		this.WARN("Cannot retrieve savedata: no cart code available");
+		return false;
+	}
 	try {
 		var storage = window.localStorage;
 		var data = storage[this.SYS_ID + '.' + this.mmu.cart.code];
