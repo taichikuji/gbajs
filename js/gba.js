@@ -329,11 +329,19 @@ GameBoyAdvance.prototype.storeSavedata = function() {
 	}
 	try {
 		var storage = window.localStorage;
+		if (!storage) {
+			this.WARN('localStorage is not available');
+			return;
+		}
 		var key = this.SYS_ID + '.' + this.mmu.cart.code;
 		storage[key] = this.encodeBase64(sram.view);
 		this.INFO('Savedata stored for ' + this.mmu.cart.code + ' (size: ' + sram.buffer.byteLength + ' bytes)');
 	} catch (e) {
-		this.WARN('Could not store savedata! ' + e);
+		if (e.name === 'QuotaExceededError' || e.name === 'NS_ERROR_DOM_QUOTA_REACHED') {
+			this.WARN('Could not store savedata: localStorage quota exceeded');
+		} else {
+			this.WARN('Could not store savedata! ' + e);
+		}
 	}
 };
 
